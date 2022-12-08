@@ -33,7 +33,8 @@ class MongoContainer {
 
     async update(id, obj){
         try {
-            const updateItem= await  this.model.updateOne({ _id: id }, { $set: obj });
+            const {name,price,stock}=obj
+            const updateItem= await this.model.updateOne({ _id: id }, { $set: {name,price,stock} });
             return updateItem
         } catch (error) {
             return {error: 'No se ha podido Actualizar'}

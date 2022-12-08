@@ -34,7 +34,7 @@ const productPut = async (req,res) => {
     try {
         const {id} =req.params;
         const {name,price,stock}= req.body;
-        const productUpdate = await db.update(id, name, price,stock)
+        const productUpdate = await db.update(id, {name,price,stock})
         res.send(productUpdate)
     } catch (error) {
         return{error:'Producto no Modificado'}
