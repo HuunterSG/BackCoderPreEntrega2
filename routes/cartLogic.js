@@ -1,9 +1,9 @@
 
-import ProductsMongoDao from "../persistence/Daos/productsMongoDaos.js";
+import CartsMongoDao from "../persistence/Daos/cartsMongoDaos.js";
 
-const db = new ProductsMongoDao();
+const db = new CartsMongoDao();
 
-const productGet = async(req, res)=>{
+const cartGetAll = async(req, res)=>{
     try {
         db.getAll().then(response=>res.json(response))
     } catch (error) {
@@ -11,7 +11,7 @@ const productGet = async(req, res)=>{
     }
 }
 
-const productGetById = async (req,res) => {
+const cartGetById = async (req,res) => {
     try {
         const {id} = req.params
         const product = await db.getById(id)
@@ -22,7 +22,7 @@ const productGetById = async (req,res) => {
     }
 }
 
-const productPost = async (req,res) => {
+const cartPost = async (req,res) => {
     try {
         db.save(req.body).then(response => res.json(response))
     } catch (error) {
@@ -30,7 +30,7 @@ const productPost = async (req,res) => {
     }
 }
 
-const productPut = async (req,res) => {
+const cartPut = async (req,res) => {
     try {
         const {id} =req.params;
         const {name,price,stock}= req.body;
@@ -41,7 +41,7 @@ const productPut = async (req,res) => {
     }
 }
 
-const productDelete = async (req,res) =>{
+const cartDelete = async (req,res) =>{
     try {
         const {id} = req.params
         const productsDelete = await db.deleteById(id)
@@ -54,4 +54,4 @@ const productDelete = async (req,res) =>{
     }
 }
 
-export {productGet,productGetById,productPost,productPut,productDelete}
+export {cartGetAll,cartGetById,cartPost,cartPut,cartDelete}
